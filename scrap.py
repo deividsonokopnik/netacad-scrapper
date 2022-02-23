@@ -1,5 +1,14 @@
+from bs4 import BeautifulSoup
+
+import requests
+
 site="https://lms.netacad.com/grade/report/grader/index.php?id="
 id=0
-site=site+id;
+site=site+str(id)
 
-print(site)
+html = requests.get(site).content
+
+soup=BeautifulSoup(html, 'html.parser')
+
+
+print(soup.prettify())
